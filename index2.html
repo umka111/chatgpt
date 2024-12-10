@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT Like Site</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      background-color: #ffffff;
+      width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-box {
+      height: 400px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+    }
+
+    .user-input {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .send-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .send-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div id="chat-box" class="chat-box"></div>
+    <textarea id="user-input" placeholder="Savol bering..." class="user-input"></textarea>
+    <button id="send-btn" class="send-btn">Yuborish</button>
+  </div>
+
+  <script>
+    document.getElementById("send-btn").addEventListener("click", function() {
+      const userInput = document.getElementById("user-input").value;
+      
+      if (userInput) {
+        // Foydalanuvchi xabarini chat boxga qo'shish
+        const chatBox = document.getElementById("chat-box");
+        chatBox.innerHTML += `<div><strong>Siz:</strong> ${userInput}</div>`;
+
+        // Javobni avtomatik yaratish (bu yerda oddiy javobni o'rnatamiz)
+        const response = generateAutoResponse(userInput);
+
+        // Avtomatik javobni chat boxga qo'shish
+        chatBox.innerHTML += `<div><strong>ChatGPT:</strong> ${response}</div>`;
+
+        // Scrollni pastga tushirish
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Input maydonini tozalash
+        document.getElementById("user-input").value = "";
+      }
+    });
+
+    // Avtomatik javob berish funksiyasi
+    function generateAutoResponse(userInput) {
+      // Bu yerda oddiy javob yaratamiz, foydalanuvchi so'roviga qarab
+      const lowerInput = userInput.toLowerCase();
+
+      if (lowerInput.includes("salom")) {
+        return "Salom! Qanday yordam bera olishim mumkin?";
+      } else if (lowerInput.includes("yordam")) {
+        return "Albatta! Nima haqida yordam kerak?";
+      } else if (lowerInput.includes("rahmat")) {
+        return "Sizga yordam bera olishimdan mamnunman!";
+      } else {
+        return "Kechirasiz, bu savolga javob bera olmayman.";
+      }
+    }
+  </script>
+</body>
+</html>
